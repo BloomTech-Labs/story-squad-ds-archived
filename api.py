@@ -4,6 +4,6 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def home():
-    return "small test"
+    return "itty bitty test"
 
 # run locally with gunicorn api:app
