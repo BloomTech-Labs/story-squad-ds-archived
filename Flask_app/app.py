@@ -7,9 +7,9 @@ from google.oauth2 import service_account
 
 def create_app():
     app = Flask(__name__)
-    
-    with urllib.request.urlopen(config('GOOGLE_APPLICATION_CREDENTIALS')) as url:
-        data = json.loads(url.read().decode())
+    data = config('GOOGLE_CREDS')
+    data = json.loads(data)
+
     data = service_account.Credentials.from_service_account_info(data)
 
     @app.route('/')
