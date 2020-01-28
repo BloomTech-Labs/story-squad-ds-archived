@@ -1,14 +1,16 @@
 from decouple import config
-from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from google.cloud import vision
+import urllib.request, json
+from google.oauth2 import service_account
 
-
-load_dotenv()
 
 def create_app():
     app = Flask(__name__)
-    app.config['GOOGLE_APPLICATION_CREDENTIALS'] = config('GOOGLE_APPLICATION_CREDENTIALS')
+    
+    with urllib.request.urlopen(config('GOOGLE_APPLICATION_CREDENTIALS')) as url:
+        data = json.loads(url.read().decode())
+    data = service_account.Credentials.from_service_account_info(data)
 
     @app.route('/')
     def root(methods=['POST']):
@@ -17,7 +19,7 @@ def create_app():
         def transcribe(uri):
             """Detects document features in the file located in Google Cloud
             Storage."""
-            client = vision.ImageAnnotatorClient()
+            client = vision.ImageAnnotatorClient(credentials=data)
             image = vision.types.Image()
             image.source.image_uri = uri
             response = client.document_text_detection(image=image)
@@ -25,6 +27,7 @@ def create_app():
             return response.text_annotations[0].description
         
         response = {'Transcription':  transcribe(uri)}
+        
         return jsonify(response)
         
 
