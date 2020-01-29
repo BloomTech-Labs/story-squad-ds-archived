@@ -1,18 +1,12 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline. Feel free to add your own flare to it.
+# Story Squad - Data Science
 
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs.
+You can find the project at [https://story-squad.netlify.com/](https://story-squad.netlify.com/).
 
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric.  Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
-# 1️⃣ Title of project goes here
-
-You can find the project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
-
-## 5️⃣ Contributors
+## Contributors
 
 🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
 
-|                                       [Student 1](https://github.com/)                                        |                                       [Student 2](https://github.com/)                                        |                                       [Student 3](https://github.com/)                                        |                                       [Student 4](https://github.com/)                                        |                                       [Student 5](https://github.com/)                                        |
+|                                       [Samantha Finley](https://github.com/srfinley)                                        |                                       [Bhavani Rajan](https://github.com/Bhavani-Rajan)                                        |                                       [Clay Roberts](https://github.com/HakujouRyu)                                        |                                       [Ahmad Guenoun](https://github.com/amguenoun)                                        |                                       [Student 5](https://github.com/)                                        |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
 |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
 |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
@@ -32,19 +26,13 @@ You can find the project at [🚫URL NAME GOES HERE](🚫copy and paste URL here
 ## Project Overview
 
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+[Trello Board](https://trello.com/b/95gq0QEF/labs-20-story-squad)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+[Product Canvas](https://www.notion.so/Story-Squad-a5bff36c779a44bd91fa97e9af27a944)
 
-🚫 Replace lorem ipsum with a description of your project
+Story Squad is a creative competition platform that encourages children to sharpen their language, drawing, teamwork, and critical thinking skills through an engaging, weekly battle.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-🚫  delete if front end is not applicable to your project
-
-1️⃣ [Deployed Front End](🚫add link to deployed app here)
+1️⃣ [Deployed Front End](https://story-squad.netlify.com/))
 
 ### Tech Stack
 
@@ -128,7 +116,7 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](_link to your backend readme here_) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/story-squad-be/blob/master/README.md) for details on the backend of our project.
 
-See [Front End Documentation](_link to your front end readme here_) for details on the front end of our project.
+See [Front End Documentation](https://github.com/Lambda-School-Labs/story-squad-fe/blob/master/README.md) for details on the front end of our project.
 
