@@ -15,16 +15,16 @@ def create_app():
     @app.route('/', methods=['POST']) # just read that this is where the methods list actually goes
     def root():
         # Get json objects
-        print("sanity check")
         body = request.get_json()
-        print(body.keys())
+        # print(body)
         raw_images = body['images']
-        print(raw_images.keys())
         length = raw_images['length']
         images = []
-        for key in range(length):
-            images.append(base64.b64decode(raw_images[str(key)]))
-
+        try:
+            for key in range(length):
+                images.append(base64.b64decode(raw_images[str(key)]))
+        except:
+            print("Encoding error")
         #build list of images (still assuming urls for now)
         # images = []
         # for key in body.keys():
@@ -36,22 +36,25 @@ def create_app():
             Storage."""
             client = vision.ImageAnnotatorClient(credentials=api_key)
             image = types.Image(content=encoded_image)
-
-            response = client.document_text_detection(image)
-            print(response)
-            return response.text_annotations[0].description
+            try:
+                response = client.document_text_detection(image)
+            except:
+                return "Error in Google API"
+            if response.text_annotations:
+                return response.text_annotations[0].description
+            else: 
+                return "No Text"
         
         #Get transcrtipt (currently just returning diagnostis!)
         transcripts = []
         for item in images:
-            print(item)
             transcripts.append(transcribe(item).replace('\n', ' '))
             # transcripts.append((f'testing\n{item}').replace('\n', ' '))
 
         #Build response dict
         dic = {}
         dic['length'] = length
-        
+
         for key in range(length):
             dic[str(key)] = transcripts[key]
         
