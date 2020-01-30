@@ -73,7 +73,7 @@ Story Squad is a creative competition platform that encourages children to sharp
 
 #### To receive a transcription of an image:
 
-Connect to the app at (https://ss-ds.herokuapp.com)[https://ss-ds.herokuapp.com] by a POST request. In the JSON body of the request, include any number of base64-encoded images, with the initial metadata (e.g., `data:image/png;base64,`) stripped out. Format the JSON as follows:
+Connect to the app at [https://ss-ds.herokuapp.com/](https://ss-ds.herokuapp.com/) by a POST request. In the JSON body of the request, include any number of base64-encoded images, with the initial metadata (e.g., `data:image/png;base64,`) stripped out. Format the JSON as follows:
 
 ```
 {
