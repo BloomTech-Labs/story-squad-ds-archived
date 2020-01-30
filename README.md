@@ -5,9 +5,9 @@ You can find the project at [https://story-squad.netlify.com/](https://story-squ
 ## Contributors
 
 
-|                                       [Samantha Finley](https://srfinley.github.io/)                                        |                                       [Bhavani Rajan](https://bhavani-rajan.github.io/)                                        |                                       [Clay Roberts](claywaddell.com)                                        |                                       [Ahmad Guenoun](https://github.com/amguenoun)                                        |                                                                               |
+|                                       [Samantha Finley](https://srfinley.github.io/)                                        |                                       [Bhavani Rajan](https://bhavani-rajan.github.io/)                                        |                                       [Clay Roberts](claywaddell.com)                                        |                                       [Ahmad Guenoun](https://personal-portfolio.amguenoun.now.sh/)                                        |                                                                               |
 | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://srfinley.github.io/img/headshot.jpg" width = "200" />](https://srfinley.github.io/)                       |                      [<img src="https://bhavani-rajan.github.io/img/RB.jpeg" width = "200" />](https://bhavani-rajan.github.io/)                       |                      [<img src="http://www.claywaddell.com/img/slack.jpg" width = "200" />](claywaddell.com)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |                                             |
+|                      [<img src="https://srfinley.github.io/img/headshot.jpg" width = "200" />](https://srfinley.github.io/)                       |                      [<img src="https://bhavani-rajan.github.io/img/RB.jpeg" width = "200" />](https://bhavani-rajan.github.io/)                       |                      [<img src="http://www.claywaddell.com/img/slack.jpg" width = "200" />](claywaddell.com)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://personal-portfolio.amguenoun.now.sh/)                       |                                             |
 |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/srfinley)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Bhavani-Rajan)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/HakujouRyu)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/amguenoun)           |                         |
 | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/samantha-finley-1a7ab6143/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](linkedin.com/in/bhavani-rajan-585645) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](linkedin.com/in/ccrw) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |  |
 
@@ -71,13 +71,40 @@ Story Squad is a creative competition platform that encourages children to sharp
 
 ### How to connect to the API
 
-The Data Science API is hosted at [https://ss-ds.herokuapp.com](https://ss-ds.herokuapp.com). It accepts image URL(s) and outputs a JSON object formatted as {Transcription: ...} that contains the text identified in the transcribed image(s).
+#### To receive a transcription of an image:
 
-The name of the parameter is image_location. For example, to receive the text from [this](http://justsomething.co/wp-content/uploads/2019/01/19-of-the-funniest-tumblr-posts-about-cats-758x397.jpg) image, you make a request at [https://ss-ds.herokuapp.com/?image_location=http://justsomething.co/wp-content/uploads/2019/01/19-of-the-funniest-tumblr-posts-about-cats-758x397.jpg](https://ss-ds.herokuapp.com/?image_location=http://justsomething.co/wp-content/uploads/2019/01/19-of-the-funniest-tumblr-posts-about-cats-758x397.jpg). The output will be {Transcription:	"When seven cats all discover the same slightly elevated flat thing and claim it as their own while pretending the other six cats don't exist. "}
+Connect to the app at (https://ss-ds.herokuapp.com)[https://ss-ds.herokuapp.com] by a POST request. In the JSON body of the request, include any number of base64-encoded images, with the initial metadata (e.g., `data:image/png;base64,`) stripped out. Format the JSON as follows:
 
-The API can also accept multiple images simultaneously. To make a request on more than one image, separate the URLs with a single comma and pass them in as image_location. The output will still be a single transcription, consisting of the transcriptions of each of the images in the order passed, with spaces in between each image's text. For example, to receive a combined transcription of the above image and [this](https://blazepress.com/.image/t_share/MTI4OTkzNTA4ODI3NjU2MTYy/1jay.jpg) image, you make a request at [https://ss-ds.herokuapp.com/?image_location=http://justsomething.co/wp-content/uploads/2019/01/19-of-the-funniest-tumblr-posts-about-cats-758x397.jpg,https://blazepress.com/.image/t_share/MTI4OTkzNTA4ODI3NjU2MTYy/1jay.jpg](https://ss-ds.herokuapp.com/?image_location=http://justsomething.co/wp-content/uploads/2019/01/19-of-the-funniest-tumblr-posts-about-cats-758x397.jpg,https://blazepress.com/.image/t_share/MTI4OTkzNTA4ODI3NjU2MTYy/1jay.jpg). The output will be {Transcription: "When seven cats all discover the same slightly elevated flat thing and claim it as their own while pretending the other six cats don't exist.  \"I don't understand the question, and I won't respond to it.\" - Catcille Bluth - Jay Malsky (@JayMalsky, Instagram) -- "}.
+```
+{
+  images: {
+    "length": 2,
+    "0": "iVBORw0KGgo...",
+    "1": "/9j/4AAQSkZJR..."
+  }
+}
+```
+Make sure that the "length" value is an accurate integer greater than zero. All keys for image encodings must be consecutive string integers starting with 0 and continuing to `length-1`. It is recommended that the keys accurately reflect the ordering of the pages of the story.
 
-**Only separate the URLs in a batch request with a comma. Inserting a space or any other extranous characters will result in an internal server error.**
+The app returns a JSON object structured as follows:
+```
+{
+  images: {
+    "length": 2,
+    "0": "transcribed text of image 0",
+    "1": "transcribed text of image 1"
+  }
+  metadata: {
+    "length": 2,
+    "0": {placeholder metadata of image 0},
+    "1": {placeholder metadata of image 1}
+  }
+}
+```
+
+The API does not yet collect or return any metadata on the images it processes.
+
+If the Google Vision API fails to detect any text in a passed image, the transcript for that image will read "No Text".
 
 ## Contributing
 
