@@ -6,10 +6,8 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-flask = "*"
 google-cloud-datastore = "*"
 google-cloud-vision = "*"
-gunicorn = "*"
 python-decouple = "*"
 python-dotenv = "*"
 
