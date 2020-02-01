@@ -1,4 +1,4 @@
-import { ProcessedData } from './models';
+import { Transcribed } from './models';
 
 export const attemptJSONParse = (data: string) => {
   try {
@@ -8,4 +8,4 @@ export const attemptJSONParse = (data: string) => {
   }
 };
 
-export const onlyParsedData = (data: any): data is ProcessedData => data?.images && data.metadata;
+export const onlyTranscribed = (data: any): data is Transcribed => data?.images && data.metadata;

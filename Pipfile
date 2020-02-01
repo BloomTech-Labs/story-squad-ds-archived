@@ -10,6 +10,8 @@ google-cloud-datastore = "*"
 google-cloud-vision = "*"
 python-decouple = "*"
 python-dotenv = "*"
+pyinstaller = "*"
+python-datauri = "*"
 
 [requires]
 python_version = "3.7"

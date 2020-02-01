@@ -1,4 +1,4 @@
-export interface ProcessedData {
+export interface Transcribed {
   images: string[];
   metadata: Metadata[];
 }
