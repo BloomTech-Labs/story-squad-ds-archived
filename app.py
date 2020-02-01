@@ -1,5 +1,5 @@
-from sys import stdin, stdout
-from json import load, loads, dumps
+from sys import argv, stdout
+from json import loads, dumps
 from decouple import config
 
 from google.cloud import vision
@@ -63,7 +63,7 @@ def processImages(body):
     return {'images': dic, 'metadata': metadata}
 
 
-incoming = load(stdin)
+incoming = loads(argv[1])
 processed = processImages(incoming)
 stringified = dumps(processed)
 stdout.write(stringified)
