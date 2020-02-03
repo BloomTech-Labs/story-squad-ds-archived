@@ -1,4 +1,8 @@
-export interface Transcribed {
+export interface Transcribable {
+  images: string[];
+}
+
+export interface Transcription {
   images: string[];
   metadata: Metadata[];
 }

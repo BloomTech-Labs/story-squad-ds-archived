@@ -1,19 +1,21 @@
 import { PythonShell } from 'python-shell';
-import { Observable } from 'rxjs';
-import { map, filter, shareReplay } from 'rxjs/operators';
-import { attemptJSONParse, onlyTranscribed } from './utils';
 
-const { stdin, stdout, stderr } = new PythonShell('../src/transcription.py', { stdio: 'pipe' });
+import { Transcribable, Transcription } from './models';
+import { attemptJSONParse, onlyTranscription } from './utils';
 
-const testData = require('./test.json');
-stdin.write(JSON.stringify(testData));
-stdin.end();
+const process = async (data: Transcribable) => {
+  const shell = new PythonShell('../src/transcription.py', { stdio: 'pipe' });
+  shell.stdin.write(JSON.stringify(data));
+  shell.stdin.end();
+  return await new Promise<Transcription>((resolve, reject) => {
+    let out: string[] = [];
+    shell.stderr.on('error', (...err) => reject(...err));
+    shell.stdout.on('data', (...data) => (out = [...out, ...data]));
+    shell.stdout.on('close', () => resolve(out.map(attemptJSONParse).find(onlyTranscription)));
+  });
+};
 
-const $out = new Observable((observer) => {
-  stdout.on('data', (...data) => observer.next(...data));
-  stderr.on('error', (...err) => observer.error(err));
-  stdout.on('close', () => observer.complete());
-});
-
-const $parsed = $out.pipe(map(attemptJSONParse), filter(onlyTranscribed), shareReplay(1));
-$parsed.subscribe(console.log);
+const data = require('./test.json');
+process(data)
+  .then(console.log)
+  .catch(console.error);
