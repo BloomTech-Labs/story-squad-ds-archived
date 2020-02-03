@@ -37,10 +37,10 @@ def process_images(uris):
 
 
 def main(transcribable):
-    loaded = load(transcribable)
-    transcriptions = process_images(loaded['images'])
+    transcriptions = process_images(transcribable['images'])
     return dumps(transcriptions)
 
 
-output = main(stdin)
+json = load(stdin)
+output = main(json)
 stdout.write(output)
