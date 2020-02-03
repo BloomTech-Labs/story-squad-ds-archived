@@ -1,5 +1,9 @@
+# Keeping credentials secret
+*.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
 *$py.class
 
 # C extensions
@@ -126,5 +130,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-node_modules
