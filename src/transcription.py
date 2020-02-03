@@ -1,5 +1,5 @@
 from sys import stdin, stdout
-from json import load, loads, dumps
+from json import loads, dumps
 from decouple import config
 from datauri import DataURI
 
@@ -37,10 +37,11 @@ def process_images(uris):
 
 
 def main(transcribable):
-    transcriptions = process_images(transcribable['images'])
+    json = loads(transcribable)
+    transcriptions = process_images(json['images'])
     return dumps(transcriptions)
 
 
-json = load(stdin)
-output = main(json)
+data = stdin.read()
+output = main(data)
 stdout.write(output)
