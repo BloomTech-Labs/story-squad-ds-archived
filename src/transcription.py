@@ -15,12 +15,9 @@ api_key = service_account.Credentials.from_service_account_info(api_key)
 client = vision.ImageAnnotatorClient(credentials=api_key)
 
 
-def extract_data(uri):
-    return DataURI(uri).data
-
-
-def transcribe(encoded_image):
-    image = types.Image(content=encoded_image)
+def transcribe(uri):
+    data = DataURI(uri).data
+    image = types.Image(content=data)
     response = client.document_text_detection(image)
 
     if response.text_annotations:
@@ -29,18 +26,21 @@ def transcribe(encoded_image):
         return "No Text"
 
 
-def nothing(image):
+def nothing(transcript):
     return {"nada": "nothing"}
 
 
-def process_images(raw_images):
-    data = map(extract_data, raw_images)
-    transcripts = map(transcribe, data)
+def process_images(uris):
+    transcripts = map(transcribe, uris)
     metadata = map(nothing, transcripts)
     return {'images': list(transcripts), 'metadata': list(metadata)}
 
 
-incoming = load(stdin)
-processed = process_images(incoming['images'])
-stringified = dumps(processed)
-stdout.write(stringified)
+def main(transcribable):
+    loaded = load(transcribable)
+    transcriptions = process_images(loaded['images'])
+    return dumps(transcriptions)
+
+
+output = main(stdin)
+stdout.write(output)
