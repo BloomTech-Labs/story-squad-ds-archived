@@ -6,7 +6,7 @@ import { attemptJSONParse, onlyTranscription } from './utils';
 // Function that takes in data in the Transcribable data format then outputs
 // the transcribed data as a promise
 const process = (data: Transcribable) => {
-  // Calls the Python script using `spwan` from node's built in `child_process` (Wrapped in helpful abstraction library)
+  // Calls the Python script using `spawn` from node's built in `child_process` (Wrapped in helpful abstraction library)
   const shell = new PythonShell('../src/transcription.py', { stdio: 'pipe' });
 
   // Writes the input data to the `stdin` of the python shell
