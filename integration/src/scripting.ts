@@ -39,14 +39,14 @@ import { Scripts } from './models';
  * after being found with the `findResult()` callback
  */
 export const runScript = (
-  script: keyof Scripts, // Matches a key of the `Scripts` interface which is a path to the script being used
-  data: Scripts[typeof script]['input'], // Uses the `input` type for the selected Script
-  findResults: (out: string[]) => Scripts[typeof script]['output'] // Uses the output data type of the selected Script
+  scriptPath: keyof Scripts, // Matches a key of the `Scripts` interface which is a path to the script being used
+  inputData: Scripts[typeof scriptPath]['input'], // Uses the `input` type for the selected Script
+  findResults: (out: string[]) => Scripts[typeof scriptPath]['output'] // Uses the output data type of the selected Script
 ): Promise<ReturnType<typeof findResults>> => {
-  const shell = new PythonShell(script, { stdio: 'pipe' }); // Starts script in the background and opens up stdin for piping data
+  const shell = new PythonShell(scriptPath, { stdio: 'pipe' }); // Starts script in the background and opens up stdin for piping data
   return new Promise((resolve, reject) => {
     // Creates a new promise for the result, since the script is async a promise makes most since
-    shell.stdin.write(JSON.stringify(data)); // Writes the data to stdin
+    shell.stdin.write(JSON.stringify(inputData)); // Writes the data to stdin
     shell.stdin.end(); // Closes stdin to the script can start
 
     let out: string[] = []; // An array of all the terminal outputs
