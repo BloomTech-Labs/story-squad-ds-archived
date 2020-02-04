@@ -7,6 +7,12 @@ import { runScript } from './scripting';
 
 dotenv.config();
 
+function transcribe(data: Transcribable) {
+  return runScript('./ds/transcription.py', data, (out) =>
+    out.map(attemptJSONParse).find(onlyTranscription)
+  );
+}
+
 const app = express();
 app.use(express.json());
 
@@ -19,9 +25,3 @@ app.post('/upload', async (req, res) => {
 const port = Number(process.env.PORT);
 app.listen(port);
 console.log(`Listening on port ${port}`);
-
-function transcribe(data: Parameters<typeof runScript>[1]) {
-  return runScript('./ds/transcription.py', data, (out) =>
-    out.map(attemptJSONParse).find(onlyTranscription)
-  );
-}
