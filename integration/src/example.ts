@@ -1,9 +1,10 @@
+import { Transcribable } from './models';
 import { runScript } from './scripting';
 import { attemptJSONParse, onlyTranscription } from './utils';
 
 // Wrapper function that runs a specific script
 // Parameters<typeof runScript>[1] is used to specify the second parameter type of `runScript`
-function transcribe(data: Parameters<typeof runScript>[1]) {
+function transcribe(data: Transcribable) {
   return runScript(
     '../src/transcription.py', // Specifies the script to use, the path is relative to the directory the application is started from
     data, // The data to pass into stdin of the script
