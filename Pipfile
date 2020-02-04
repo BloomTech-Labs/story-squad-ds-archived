@@ -12,6 +12,7 @@ google-cloud-vision = "*"
 gunicorn = "*"
 python-decouple = "*"
 python-dotenv = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.7"
