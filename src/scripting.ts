@@ -39,13 +39,13 @@ import { Scripts } from './models';
  * after being found with the `findResult()` callback
  */
 export const runScript = (
-  script: keyof Scripts,
-  data: Scripts[typeof script]['input'],
-  findResults: (out: string[]) => Scripts[typeof script]['output']
+  scriptPath: keyof Scripts,
+  inputData: Scripts[typeof scriptPath]['input'],
+  findResults: (out: string[]) => Scripts[typeof scriptPath]['output']
 ): Promise<ReturnType<typeof findResults>> => {
-  const shell = new PythonShell(script, { stdio: 'pipe' });
+  const shell = new PythonShell(scriptPath, { stdio: 'pipe' });
   return new Promise((resolve, reject) => {
-    shell.stdin.write(JSON.stringify(data));
+    shell.stdin.write(JSON.stringify(inputData));
     shell.stdin.end();
 
     let out: string[] = [];
