@@ -10,3 +10,10 @@ export interface Transcription {
 export interface Metadata {
   [key: string]: string;
 }
+
+export interface Scripts {
+  './ds/transcription.py': {
+    input: Transcribable;
+    output: Transcription;
+  };
+}
