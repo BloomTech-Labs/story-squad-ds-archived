@@ -13,7 +13,7 @@ python-dotenv = "*"
 pandas = "*"
 pyinstaller = "*"
 python-datauri = "*"
-
+textstat = "*"
 
 [requires]
 python_version = "3.7"
