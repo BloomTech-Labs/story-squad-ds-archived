@@ -62,6 +62,6 @@ stdout.write(output)
 
 
 # Can be tested with this command
-# pipenv run python3 src/transcription.py < integration/src/test.json
+# pipenv run python3 src/transcription.py < integration/src/transcription_test.json
 
 # Notice how the `test.json` is piped into stdin with the `<`
