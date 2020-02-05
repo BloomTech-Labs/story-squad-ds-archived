@@ -6,13 +6,14 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-flask = "*"
 google-cloud-datastore = "*"
 google-cloud-vision = "*"
-gunicorn = "*"
 python-decouple = "*"
 python-dotenv = "*"
 pandas = "*"
+pyinstaller = "*"
+python-datauri = "*"
+
 
 [requires]
 python_version = "3.7"
