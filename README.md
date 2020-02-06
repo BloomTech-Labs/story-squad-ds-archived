@@ -12,6 +12,9 @@ You can find the project at [https://story-squad.netlify.com/](https://story-squ
 
 🚫 5️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
 
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/ee09253fa102b88dc029/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/story-squad-ds/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ee09253fa102b88dc029/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/story-squad-ds/test_coverage)
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](https://story-squad.netlify.com/)
