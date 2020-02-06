@@ -9,9 +9,9 @@ jobs:
 
     steps:
      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v2.4.0
-      env:
+       uses: paambaati/codeclimate-action@v2.4.0
+       env:
         CC_TEST_REPORTER_ID: e649f1c3f2113929a314876419ba858582526558fc4b93b30dfce9e40c36b242
-      with:
+       with:
         coverageCommand: npm run coverage
         debug: true
