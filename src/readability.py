@@ -16,6 +16,10 @@ def get_stats(text):
     lwf = textstat.linsear_write_formula(text)
     gunn_fog = textstat.gunning_fog(text)
     consolidated_score = textstat.text_standard(text)
+
+    doc_length = len(text)  # think about excluding spaces?
+    quote_count = text.count('"')
+
     stats = {
         "flesch_reading_ease": fre,
         "smog_index": smog,
@@ -26,7 +30,9 @@ def get_stats(text):
         "difficult_words": diff_words,
         "linsear_write_formula": lwf,
         "gunning_fog": gunn_fog,
-        "consolidated_score": consolidated_score
+        "consolidated_score": consolidated_score,
+        "doc_length": doc_length,
+        "quote_count": quote_count
     }
     return stats
 
@@ -48,4 +54,7 @@ output = main(data)
 
 # Prints the output string to stdout
 stdout.write(output)
+
+# run with:
+# pipenv run python3 src/readability.py < integration/src/stats_test.json
 
