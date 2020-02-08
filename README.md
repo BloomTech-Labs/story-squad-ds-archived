@@ -96,6 +96,35 @@ The API does not yet collect or return any metadata on the images it processes.
 
 If the Google Vision API fails to detect any text in a passed image, the transcript for that image will read "No Text".
 
+#### To receive the readability scores of a text
+
+Pipe in json data containing the text of the story via STDIN. Format the JSON as follows:
+
+```json
+{
+    "story": "Once upon a time, ..."
+}
+```
+
+The app returns a JSON object structured as follows:
+
+```json
+{
+    "flesch_reading_ease": score,
+    "smog_index": index,
+    "flesch_kincaid_grade": grade,
+    "coleman_liau_index": index,
+    "automated_readability_index": index,
+    "dale_chall_readability_score": score,
+    "difficult_words": number of words,
+    "linsear_write_formula": formula,
+    "gunning_fog": index,
+    "consolidated_score": score,
+    "doc_length": length,
+    "quote_count": count 
+}
+```
+
 ## Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
