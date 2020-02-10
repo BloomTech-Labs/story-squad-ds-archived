@@ -49,3 +49,7 @@ output = main(data)
 # Prints the output string to stdout
 stdout.write(output)
 
+
+
+# Can be tested with this command
+# pipenv run python3 src/readability.py < integration/src/stats_test.json
