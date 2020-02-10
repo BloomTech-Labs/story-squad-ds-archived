@@ -1,0 +1,19 @@
+human: the human-written transcript of the story
+machine: the machine-written transcript of the story
+storyno: the story number as inferred from the name of its folder
+error: the difference between the human and machine transcripts. Calculated as the Levenshtein distance between the two transcripts (excluding spaces) divided by their average length.
+
+Each metric is calculated separately for the human and machine transcripts. The metric for the human transcript has a _h appended to the end of the column name. For machine transcript scores, a _m is used instead.
+
+quotes: number of quotation marks
+len: length in characters
+fre: Flesch Reading Ease
+smog: SMOG grade
+fkg: Flesch_Kincaid Grade Level
+cli: Coleman-Liau Index
+ari: Automated Readability Index
+dcr: Dale-Chall Readability Score
+dw: Difficult Words
+lwf: Linsear Write Formula
+gf: Gunning fog
+cs: Consolidated Score
