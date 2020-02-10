@@ -52,4 +52,4 @@ stdout.write(output)
 
 
 # Can be tested with this command
-# pipenv run python3 src/readability.py < integration/src/stats_test.json
+# pipenv run python3 dotPy/readability.py < integration/src/stats_test.json
