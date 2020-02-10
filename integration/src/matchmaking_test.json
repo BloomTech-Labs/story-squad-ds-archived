@@ -1,0 +1,38 @@
+{
+    "user_1": {
+        "age": "10",
+        "grade": "5",
+        "winrate": "45",
+        "canonized": false,
+        "flesch_reading_ease": "score",
+        "smog_index": "index",
+        "flesch_kincaid_grade": "grade",
+        "coleman_liau_index": "index",
+        "automated_readability_index": "index",
+        "dale_chall_readability_score": "score",
+        "difficult_words": "number of words",
+        "linsear_write_formula": "formula",
+        "gunning_fog": "index",
+        "consolidated_score": "score",
+        "doc_length": "length",
+        "quote_count": "count" 
+    },
+    "user_2": {
+        "age": "10",
+        "grade": "5",
+        "winrate": "45",
+        "canonized": false,
+        "flesch_reading_ease": "score",
+        "smog_index": "index",
+        "flesch_kincaid_grade": "grade",
+        "coleman_liau_index": "index",
+        "automated_readability_index": "index",
+        "dale_chall_readability_score": "score",
+        "difficult_words": "number of words",
+        "linsear_write_formula": "formula",
+        "gunning_fog": "index",
+        "consolidated_score": "score",
+        "doc_length": "length",
+        "quote_count": "count"    
+    }
+}
