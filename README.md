@@ -125,6 +125,54 @@ The app returns a JSON object structured as follows:
 }
 ```
 
+#### To receive the matches for a set of competitors
+
+Pipe in json data containing each competitor's ID and the statistics for that week's story. There must be at least two competitors for any matches to be set up. Format the JSON as follows:
+
+```json
+{"ID_0": 
+  {"quote_count": count, 
+  "doc_length": length, 
+  "flesch_reading_ease": score, 
+  "smog_index": index, 
+  "flesch_kincaid_grade_level": score, 
+  "coleman_liau_index": index, 
+  "automated_readability_index": index, 
+  "dale_chall_readability score": score, 
+  "difficult_words": count, 
+  "linsear_write_formula": score, 
+  "gunning_fog": score, 
+  "consolidated_score": score, 
+  "grade": grade}, 
+"ID_1": 
+  {"quote_count": count, 
+  "doc_length": length, 
+  "flesch_reading_ease": score, 
+  "smog_index": index, 
+  "flesch_kincaid_grade_level": score, 
+  "coleman_liau_index": index, 
+  "automated_readability_index": index, 
+  "dale_chall_readability score": score, 
+  "difficult_words": count, 
+  "linsear_write_formula": score, 
+  "gunning_fog": score, 
+  "consolidated_score": score, 
+  "grade": grade},
+...
+```
+
+The app returns the matches in a JSON structured as follows:
+
+```json
+{"match_0": 
+  {"team_1": ["ID_0", "ID_1"], "team_2": ["ID_2", "ID_3"]}, 
+"match_1": 
+  {"team_1": ["ID_4", "ID_5"], "team_2": [["ID_6", "ID_7"]]},
+...
+```
+
+When necessary, the app will also generate a small number of one-on-one and two-on-one matches.
+
 ## Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
