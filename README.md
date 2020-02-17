@@ -31,7 +31,13 @@ Story Squad is a creative competition platform that encourages children to sharp
 
 ### Tech Stack
 
-🚫 List all of the languages, frameworks, services, etc used here.
+Crossed-out listings indicate deprecated packages.
+
+- Python
+  - ~~Flask~~
+  - Pandas
+  - Textstat
+- Google Cloud Vision services
 
 ### 2️⃣ Predictions
 
@@ -47,29 +53,17 @@ Story Squad is a creative competition platform that encourages children to sharp
 
 ### Data Sources
 
-🚫 Add to or delete souce links as needed for your project
-
-- [Source 1] (🚫add link to python notebook here)
-- [Source 2] (🚫add link to python notebook here)
-- [Source 3] (🚫add link to python notebook here)
-- [Source 4] (🚫add link to python notebook here)
-- [Source 5] (🚫add link to python notebook here)
+Due to COPPA compliance, all data scources are private.
 
 ### Python Notebooks
 
-🚫 Add to or delete python notebook links as needed for your project
-
-[Python Notebook 1](🚫add link to python notebook here)
-
-[Python Notebook 2](🚫add link to python notebook here)
-
-[Python Notebook 3](🚫add link to python notebook here)
+See the "Notebooks" directory.
 
 ### How to connect to the API
 
 #### To receive a transcription of an image
 
-Pipe in json data via STDIN. In the input, include any number of base64-encoded images, with the initial metadata (e.g., `data:image/png;base64,`) stripped out. Format the JSON as follows:
+Pipe in JSON data via stdin. In the input, include any number of base64-encoded images, with the initial metadata (e.g., `data:image/png;base64,`) stripped out. Format the JSON as follows:
 
 ```json
 {
@@ -77,7 +71,7 @@ Pipe in json data via STDIN. In the input, include any number of base64-encoded 
 }
 ```
 
-The app returns a JSON object structured as follows:
+The app returns a JSON object structured as follows via stdout:
 
 ```json
 {
@@ -98,7 +92,7 @@ If the Google Vision API fails to detect any text in a passed image, the transcr
 
 #### To receive the readability scores of a text
 
-Pipe in json data containing the text of the story via STDIN. Format the JSON as follows:
+Pipe in JSON data containing the text of the story via stdin. Format the JSON as follows:
 
 ```json
 {
@@ -106,7 +100,7 @@ Pipe in json data containing the text of the story via STDIN. Format the JSON as
 }
 ```
 
-The app returns a JSON object structured as follows:
+The app returns a JSON object structured as follows via stdout:
 
 ```json
 {
@@ -127,7 +121,7 @@ The app returns a JSON object structured as follows:
 
 #### To receive the matches for a set of competitors
 
-Pipe in json data containing each competitor's ID and the statistics for that week's story. There must be at least two competitors for any matches to be set up. Format the JSON as follows:
+Pipe in JSON data containing each competitor's ID and the statistics for that week's story. There must be at least two competitors for any matches to be set up. Format the JSON as follows:
 
 ```json
 {"ID_0": 
@@ -161,7 +155,7 @@ Pipe in json data containing each competitor's ID and the statistics for that we
 ...
 ```
 
-The app returns the matches in a JSON structured as follows:
+The app returns the matches in a JSON object structured as follows via stdout:
 
 ```json
 {"match_0": 
