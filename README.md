@@ -161,7 +161,7 @@ The app returns the matches in a JSON object structured as follows via stdout:
 {"match_0": 
   {"team_1": ["ID_0", "ID_1"], "team_2": ["ID_2", "ID_3"]}, 
 "match_1": 
-  {"team_1": ["ID_4", "ID_5"], "team_2": [["ID_6", "ID_7"]]},
+  {"team_1": ["ID_4", "ID_5"], "team_2": ["ID_6", "ID_7"]},
 ...
 ```
 
