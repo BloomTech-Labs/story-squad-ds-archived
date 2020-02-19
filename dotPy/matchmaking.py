@@ -66,6 +66,7 @@ def break_df(df):
     return str(matches)
 
 def get_cluster(df):
+    scaler = StandardScaler()
     cluster_size = get_cluster_size(df)
     norm_X = scaler.fit_transform(df[['doc_length','quote_count','difficult_words','grade']])
     

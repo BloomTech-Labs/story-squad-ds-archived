@@ -16,6 +16,7 @@ pandas = "*"
 pyinstaller = "*"
 python-datauri = "*"
 textstat = "*"
+scikit-learn = "*"
 
 [requires]
 python_version = "3.7"
