@@ -2,6 +2,8 @@ from sys import stdin, stdout
 from json import loads, dumps
 from decouple import config
 from math import ceil
+from sklearn.cluster import AgglomerativeClustering
+from sklearn.preprocessing import StandardScaler
 import pandas as pd
 
 
@@ -63,9 +65,33 @@ def break_df(df):
     matches.update(break_index(list(df_med.index), len(matches)))
     return str(matches)
 
+def get_cluster(df):
+    cluster_size = get_cluster_size(df)
+    norm_X = scaler.fit_transform(df[['doc_length','quote_count','difficult_words','grade']])
+    
+    model = AgglomerativeClustering(n_clusters=cluster_size, affinity='euclidean', linkage='ward')
+    model.fit(norm_X)
+    df['cluster'] = model.labels_
+    return df
+
+def break_clusters(df):
+    no_cluster = len(df['cluster'].unique())
+    
+    matches = {}
+    
+    for i in range(no_cluster):
+        matches.update(break_index(list(df[df['cluster'] == i].index), len(matches)))
+        
+    return str(matches)
+
+def get_cluster_size(df):
+    cluster_size = 9
+    return cluster_size
 
 def make_match(df):
-    matches = break_df(df)
+    df = get_cluster(df)
+    matches = break_clusters(df)
+    #matches = break_df(df)
     return matches
 
 
