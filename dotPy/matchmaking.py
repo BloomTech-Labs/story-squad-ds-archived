@@ -5,6 +5,7 @@ from math import ceil
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
+from collections import Counter
 
 
 def make_team(li, n):
@@ -67,9 +68,8 @@ def break_df(df):
 
 def get_cluster(df):
     scaler = StandardScaler()
-    cluster_size = get_cluster_size(df)
     norm_X = scaler.fit_transform(df[['doc_length','quote_count','difficult_words','grade']])
-    
+    cluster_size = get_cluster_size(norm_X)
     model = AgglomerativeClustering(n_clusters=cluster_size, affinity='euclidean', linkage='ward')
     model.fit(norm_X)
     df['cluster'] = model.labels_
@@ -85,9 +85,20 @@ def break_clusters(df):
         
     return str(matches)
 
-def get_cluster_size(df):
-    cluster_size = 9
-    return cluster_size
+def get_cluster_size(norm_X):
+    cluster_size = 2
+    min_cluster_size = 5
+    while min_cluster_size >= 4:
+        model = AgglomerativeClustering(n_clusters=cluster_size, affinity='euclidean', linkage='ward')
+        model.fit(norm_X)
+        min_cluster_size = min(Counter(model.labels_).values())
+        cluster_size += 1
+    return cluster_size - 2
+
+def check_cluster_size(cluster_size, labels):
+    min_size = min(Counter(labels).values())
+    print(min_size)
+    return None
 
 def make_match(df):
     df = get_cluster(df)
