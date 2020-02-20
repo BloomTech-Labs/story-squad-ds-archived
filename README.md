@@ -37,6 +37,7 @@ Crossed-out listings indicate deprecated packages.
   - ~~Flask~~
   - Pandas
   - Textstat
+  - scikit-learn
 - Google Cloud Vision services
 
 ### 2️⃣ Predictions
