@@ -85,7 +85,8 @@ def break_clusters(df):
     
     for i in range(no_cluster):
         cluster_df = df[df['cluster'] == i]
-        cluster_index = cluster_df.sort_values('coleman_liau_index').index
+        # cluster_index = cluster_df.sort_values('coleman_liau_index').index
+        cluster_index = cluster_df.index
         matches.update(break_index(list(cluster_index), len(matches)))
         
     return str(matches)
