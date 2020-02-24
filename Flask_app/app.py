@@ -5,6 +5,11 @@ from google.cloud.vision import types
 import urllib.request, json
 from google.oauth2 import service_account
 import base64
+import pytesseract
+try:
+    from PIL import Image
+except ImportError:
+    import Image
 
 def create_app():
     app = Flask(__name__)
@@ -66,5 +71,9 @@ def create_app():
 
         return jsonify(jason)
 
+    @app.route('/tess', methods=['POST'])
+    def tess():
+        print(pytesseract.image_to_string(Image.open('Flask_app/img.jpg')))
+        return "test"
 
     return app

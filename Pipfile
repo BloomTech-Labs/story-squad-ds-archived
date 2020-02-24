@@ -17,6 +17,7 @@ pyinstaller = "*"
 python-datauri = "*"
 textstat = "*"
 scikit-learn = "*"
+pytesseract = "*"
 
 [requires]
 python_version = "3.7"
