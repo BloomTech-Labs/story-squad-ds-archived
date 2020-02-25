@@ -64,7 +64,7 @@ See the "Notebooks" directory.
 
 #### To receive a transcription of an image
 
-Pipe in JSON data via stdin. In the input, include any number of base64-encoded images, with the initial metadata (e.g., `data:image/png;base64,`) stripped out. Format the JSON as follows:
+Pipe in JSON data to transcription.py via stdin. In the input, include any number of base64-encoded images, with the initial metadata (e.g., `data:image/png;base64,`) stripped out. Format the JSON as follows:
 
 ```json
 {
@@ -93,7 +93,7 @@ If the Google Vision API fails to detect any text in a passed image, the transcr
 
 #### To receive the readability scores of a text
 
-Pipe in JSON data containing the text of the story via stdin. Format the JSON as follows:
+Pipe in JSON data containing the text of the story to readability.py via stdin. Format the JSON as follows:
 
 ```json
 {
@@ -122,7 +122,7 @@ The app returns a JSON object structured as follows via stdout:
 
 #### To receive the matches for a set of competitors
 
-Pipe in JSON data containing each competitor's ID and the statistics for that week's story. There must be at least two competitors for any matches to be set up. Format the JSON as follows:
+Pipe in JSON data containing each competitor's ID and the statistics for that week's story to matchmaking.py. There must be at least two competitors for any matches to be set up. Format the JSON as follows:
 
 ```json
 {"ID_0": 
