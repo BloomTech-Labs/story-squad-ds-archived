@@ -29,9 +29,6 @@ Pitfalls:
 Need to know: 
 - Graig was against the idea of spell checking the stories and thus we left them as is. Though there may be some merit in keeping a second copy of the story that is spell checked so the metrics extracted offer more meaningful results. 
 
-Future thoughts:
-- 
-
 ## Matching
 
 Our white whale during the final period of Labs 20 was the implementation of a clustering algorithm that did a seemingly simple thing: produced clusters of a specific size (four players per match) rather than a specific number of clusters. This is a kind of off-brand use of clustering, so it's not too surprising that we didn't find a pre-written Python implementation of it. 
@@ -40,9 +37,6 @@ Regardless of whether the algorithm itself is changed or not, the best way to im
 
 Pitfalls:
 - The number of clusters is currently programmatically set such that the smallest cluster as at least 4 samples in it. This obviously is not optimal for a clustering algorithm.
-
-Need to know: 
-- 
 
 Future thoughts:
 - We briefly considered designing a matchmaking system to assign judges to the matches as well but ultimately decided that we didn't have the data to provide this service. 
