@@ -66,8 +66,6 @@ def define_model():
  model.add(Dropout(0.5))
  model.add(Dense(100, activation='softmax'))
  # compile model
- # opt = SGD(lr=0.001, momentum=0.9)
- # train model
  adam = tf.keras.optimizers.Adam(learning_rate=0.001)
  model.compile(optimizer=adam, loss='categorical_crossentropy', metrics=['top_k_categorical_accuracy'])
  return model
