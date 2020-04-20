@@ -62,16 +62,14 @@ def flag_bad_words(transcriptions):
         return transcriptions.update(dict)
     
 
-
 # Input: JSON String in the transcribable data structure
 # Output: JSON String of the data being processed into transcripts and metadata
 def main(transcribable):
     json = loads(transcribable)
-    print(json)
     transcriptions = process_images(json['images'])
     flag_bad_words(transcriptions)
     return dumps(transcriptions)
-
+ 
 
 # Reads in from stdin the entire input as a string
 data = stdin.read()
