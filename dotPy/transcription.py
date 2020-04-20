@@ -2,6 +2,7 @@ from sys import stdin, stdout
 from json import loads, dumps
 from decouple import config
 from datauri import DataURI
+import pandas as pd
 
 from google.cloud import vision
 from google.cloud.vision import types
@@ -43,11 +44,32 @@ def process_images(uris):
     return {'images': list(transcripts), 'metadata': list(metadata)}
 
 
+df = pd.read_csv('Bad_words.csv')
+bad_words_list = df['Bad_words'].to_list()
+
+
+def flag_bad_words(transcriptions):
+    # assign transcriptions to a different variable
+    parsed_string = transcriptions
+    # determine if any words in the story are in the bad words list
+    res = any(word in parsed_string for word in bad_words_list)
+    # return dictionary with True or False for backend to send to admin
+    if res == True:
+        dict = {'bad_words': [True]}
+        return transcriptions.update(dict)
+    else:
+        dict = {'bad_words': [False]}
+        return transcriptions.update(dict)
+    
+
+
 # Input: JSON String in the transcribable data structure
 # Output: JSON String of the data being processed into transcripts and metadata
 def main(transcribable):
     json = loads(transcribable)
+    print(json)
     transcriptions = process_images(json['images'])
+    flag_bad_words(transcriptions)
     return dumps(transcriptions)
 
 
