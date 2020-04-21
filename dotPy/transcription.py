@@ -43,7 +43,7 @@ def process_images(uris):
     metadata = map(nothing, transcripts)
     return {'images': list(transcripts), 'metadata': list(metadata)}
 
-
+# loading in a list of bad words and converting it to a list
 df = pd.read_csv('Bad_words.csv')
 bad_words_list = df['Bad_words'].to_list()
 
