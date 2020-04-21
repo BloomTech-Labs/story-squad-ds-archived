@@ -1,24 +1,22 @@
-import os
-os.system("ls -l")
+"""
+converting image to base64 then writing that string to a text file
+to copy-paste into a text.json file
+"""
 
 import base64
-with open("example_4.jpg", "rb") as img_file:
+with open("test_pic_4.jpg", "rb") as img_file:
     my_string = base64.b64encode(img_file.read())
     my_string = my_string.decode()
 
-text_file = open("sample.txt", "w")
-n = text_file.write(my_string)
-text_file.close()
+test_pic = open("test_pic.txt", "w")
+test_pic.write(my_string)
+test_pic.close()
 
-import json
+# from json import loads, dumps
 
-# y = json.dumps('["data:image/jpg;base64,{}"]/}'.format(my_string))
-x = {"images":["data:image/jpg;base64,' + f'{my_string}' + 'exit"]}
-z = json.dumps(x)
+# json_1 = {'images': list(my_string)}
+# json_1 = dumps(json_1)
 
-print(z)
-print(type(z))
-
-string_1 = "pipenv run python dotPy/transcription.py < integration/src/transcription_test.json"
-
-os.system(string_1)
+# import os
+# string_1 = "pipenv run python dotPy/transcription.py < test_3.json"
+# os.system(string_1)
