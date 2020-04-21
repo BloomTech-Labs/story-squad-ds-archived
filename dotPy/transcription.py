@@ -49,8 +49,8 @@ bad_words_list = df['Bad_words'].to_list()
 
 
 def flag_bad_words(transcriptions):
-    # assign transcriptions to a different variable
-    parsed_string = transcriptions
+    # turn transcriptions into a string and assigns it to a different variable
+    parsed_string = dumps(transcriptions) # + 'add profanity here to test'
     # determine if any words in the story are in the bad words list
     res = any(word in parsed_string for word in bad_words_list)
     # return dictionary with True or False for backend to send to admin
