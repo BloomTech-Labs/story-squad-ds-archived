@@ -2,6 +2,7 @@ from sys import stdin, stdout
 from json import loads, dumps
 from decouple import config
 from datauri import DataURI
+import re
 import pandas as pd
 
 from google.cloud import vision
@@ -45,12 +46,12 @@ def process_images(uris):
 
 # loading in a list of bad words and converting it to a list
 df = pd.read_csv('Bad_words.csv')
-bad_words_list = df['Bad_words'].to_list()
+bad_words_list = df['foul_language'].to_list()
 
 
 def flag_bad_words(transcriptions):
     # turn transcriptions into a string and assigns it to a different variable
-    parsed_string = dumps(transcriptions) # + 'add profanity here to test'
+    parsed_string = dumps(transcriptions) # + ' insert profanity here to test true or false'
     # determine if any words in the story are in the bad words list
     res = any(word in parsed_string for word in bad_words_list)
     # return dictionary with True or False for backend to send to admin
@@ -60,6 +61,17 @@ def flag_bad_words(transcriptions):
     else:
         dict = {'bad_words': [False]}
         return transcriptions.update(dict)
+
+
+def return_bad_words(transcriptions):
+    # convert dict to str
+    parsed_string = dumps(transcriptions) # + ' insert profanity here to test returned words'
+    # convert string to list of strings
+    string_list = parsed_string.split()
+    # returns matching words in string_list and bad_words_list
+    matches = [s for s in string_list if any(xs in s for xs in bad_words_list)]
+    dict = {'possible_words': matches}
+    return transcriptions.update(dict)
     
 
 # Input: JSON String in the transcribable data structure
@@ -68,6 +80,7 @@ def main(transcribable):
     json = loads(transcribable)
     transcriptions = process_images(json['images'])
     flag_bad_words(transcriptions)
+    return_bad_words(transcriptions)
     return dumps(transcriptions)
  
 
