@@ -2,7 +2,6 @@
 
 The state of Story Squad project at the end of Labs 21 and suggestions for further work.
 
-
 ## The Image Recognition Model
 
 For our first canvas, the DS team (Labs  21) built the image recognition model to classify the drawings that kids upload to Story Squad app. Deep learning models, like convolutional neural network (CNN, or ConvNet) and recurrent neural network (RNN) are suitable to solve our problem. The CNN models are mostly developed and used for computer vision tasks. The Long short-term memory (LSTM) model is a RNN architecture commonly used for handwriting and sketchers recognition. Going further, also a combination of CNN and LSTM can be used to build an image captioning model, it is another interesting solution for the drawings competitions. Or a yolov3 model could be used also and trained with the drawings dataset, using transfer learning techniques.
@@ -13,7 +12,7 @@ The python scripts:
 - download_subset.py  
 This script download_subset.py makes the folder data and downloads a subset from quickdraw dataset from google cloud with 100 categories
 
-- download_dataset.py   
+- download_dataset.py
 It makes the folder tensorflow_datasets and downloads the full quickdraw dataset from google cloud with 345 categories.
 
 - get_dataset.py
@@ -27,6 +26,7 @@ It loads the model.json and the weights into the model. The function load_image 
 Then the model makes prediction with one sample (the drawing uploaded to the app)
 
 In the following [folder](https://github.com/Lambda-School-Labs/story-squad-ds/tree/master/Image_Recognition_Model) you can find:
+
 - python scripts
 - serialized model and weights (model.json and model.h5)
 - screenshots of anaconda prompt with printed training metrics, final evaluation (accuracy), and top five prediction labels
