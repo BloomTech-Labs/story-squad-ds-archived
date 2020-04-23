@@ -12,13 +12,13 @@ To run the tests navigate to the root `story-squad-ds` folder:
 
 1. Change the image name in `test.py` to `<image_name>.jpg`
 2. Change the `.txt` file to `<image_name>.txt` (this is just for ease of naming and navigation)
-3. Open newly created `.txt` file
-4. Open `text_pic_X.json`, create new file, copy contents in and rename `<image_name>.json`
-5. Copy-paste base64 text from `<image_name>.txt` into appropriate place in `<image_name>.json`
-6. `cd ..` into `story-squad-ds` root folder
-7. run this line of code in command line
+3. from `story-squad-ds/testing` run `python test.py` from terminal
+   - if error, check name of photo (no spaces in photo name - change spaces to underscore "_" if needed)
+4. Open newly created `.txt` file
+5. Open `placeholder.json`, create new file, copy contents in and rename `<image_name>.json`
+6. Copy-paste base64 text from `<image_name>.txt` into appropriate place in `<image_name>.json`
+7. `cd ..` into `story-squad-ds` root folder
+8. run this line of code in command line
 `pipenv run python dotPy/transcription.py < testing/<image_name>.json`
 
-```python
-pipenv run python dotPy/transcription.py < testing/test_pic_1.json
-```
+NOTE: if error, make sure you've saved the new `.json` file and made necessary <image_namge> name changes
