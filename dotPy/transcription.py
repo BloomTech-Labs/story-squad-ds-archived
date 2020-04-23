@@ -61,8 +61,8 @@ def flag_bad_words(transcriptions):
     else:
         dict = {'bad_words': [False]}
         return transcriptions.update(dict)
-
-
+      
+      
 def return_bad_words(transcriptions):
     # convert dict to str
     parsed_string = dumps(transcriptions) # + ' insert profanity here to test returned words'
