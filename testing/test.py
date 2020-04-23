@@ -4,11 +4,11 @@ to copy-paste into a text.json file
 """
 
 import base64
-with open("test_pic_4.jpg", "rb") as img_file:
+with open("photo_3101.jpg", "rb") as img_file:
     my_string = base64.b64encode(img_file.read())
     my_string = my_string.decode()
 
-test_pic = open("test_pic_4.txt", "w")
+test_pic = open("photo_3101.txt", "w")
 test_pic.write(my_string)
 test_pic.close()
 
