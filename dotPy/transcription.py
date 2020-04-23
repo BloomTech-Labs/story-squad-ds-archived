@@ -66,11 +66,13 @@ def flag_bad_words(transcriptions):
 def return_bad_words(transcriptions):
     # convert dict to str
     parsed_string = dumps(transcriptions) # + ' insert profanity here to test returned words'
-    # convert string to list of strings
-    string_list = parsed_string.split()
-    # returns matching words in string_list and bad_words_list
-    matches = [s for s in string_list if any(xs in s for xs in bad_words_list)]
-    dict = {'possible_words': matches}
+    # returns list of matching words
+    new_list = []
+    for word in bad_words_list:
+        if word in parsed_string:
+            new_list.append(word)
+    # returns dictionary with list of matches
+    dict = {'possible_words': new_list}
     return transcriptions.update(dict)
     
 
