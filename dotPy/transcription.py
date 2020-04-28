@@ -44,45 +44,82 @@ def process_images(uris):
     metadata = map(nothing, transcripts)
     return {'images': list(transcripts), 'metadata': list(metadata)}
 
-# loading in a list of bad words and converting it to a list
-df = pd.read_csv('Bad_words.csv')
-bad_words_list = df['foul_language'].to_list()
+
+# Converts bad phrases dataframe to a list 
+df = pd.read_csv('bad_phrases.csv')
+bad_phrases = df['bad_phrases'].to_list()
+
+# Converts bad single words dataframe to a list
+df1 = pd.read_csv('bad_single.csv')
+bad_words = df1['bad_single'].to_list()
+
+# Global variable to put caught words and phrase in
+flagged_list = []
+
+# Function that removes punctuation from story
+def remove_punctuation(transcriptions):
+    parsed_string = dumps(transcriptions)
+    punctuations = '''[],!.'"\\?'''
+    for char in parsed_string:
+        if char in punctuations:
+            parsed_string = parsed_string.replace(char, '')
+    return parsed_string
 
 
+# Function that looks for bad phrases in story
+def return_bad_phrases(transcriptions):
+    # Convert dict to str using dumps to keep phrases in tact
+    parsed_string = dumps(transcriptions)
+    # Lowercase to match list of bad phrases
+    parsed_string = parsed_string.lower()
+    # Remove punctuation
+    parsed_string = remove_punctuation(parsed_string)
+    # Returns list of matching words and puts in flagged_list global variable
+    for word in bad_phrases:
+        if word in parsed_string:
+            flagged_list.append(word)
+    # Returns dictionary with list of matches
+    dict = {'possible_words' : flagged_list}
+    return transcriptions.update(dict)
+
+
+# Function that looks for single bad words in story
+def return_bad_words(transcriptions):
+    # Parsing out just the story string from dict to avoid conflicts
+    parsed_string = list(transcriptions.values())[0][0]
+    # Lowercase to match list of bad words
+    parsed_string = parsed_string.lower()
+    # Remove punctuation
+    parsed_string = remove_punctuation(parsed_string)
+    # Splitting into list of strings to detect exact matches
+    parsed_string = parsed_string.split()
+    # Finding matches and appending them to flagged_list
+    for word in bad_words:
+        if word in parsed_string:
+            flagged_list.append(word)
+    # Returns dictionary with list of matches
+    dict = {'possible_words' : flagged_list}
+    return transcriptions.update(dict)
+
+
+# Checks to see if any words have been added to the flagged_list
 def flag_bad_words(transcriptions):
-    # turn transcriptions into a string and assigns it to a different variable
-    parsed_string = dumps(transcriptions) # + ' insert profanity here to test true or false'
-    # determine if any words in the story are in the bad words list
-    res = any(word in parsed_string for word in bad_words_list)
-    # return dictionary with True or False for backend to send to admin
-    if res == True:
-        dict = {'bad_words': [True]}
+    if any(flagged_list):
+        dict = {'flagged' : [True]}
         return transcriptions.update(dict)
     else:
-        dict = {'bad_words': [False]}
+        dict = {'flagged' : [False]}
         return transcriptions.update(dict)
-      
-      
-def return_bad_words(transcriptions):
-    # convert dict to str
-    parsed_string = dumps(transcriptions) # + ' insert profanity here to test returned words'
-    # returns list of matching words
-    new_list = []
-    for word in bad_words_list:
-        if word in parsed_string:
-            new_list.append(word)
-    # returns dictionary with list of matches
-    dict = {'possible_words': new_list}
-    return transcriptions.update(dict)
-    
+
 
 # Input: JSON String in the transcribable data structure
 # Output: JSON String of the data being processed into transcripts and metadata
 def main(transcribable):
     json = loads(transcribable)
     transcriptions = process_images(json['images'])
-    flag_bad_words(transcriptions)
+    return_bad_phrases(transcriptions)
     return_bad_words(transcriptions)
+    flag_bad_words(transcriptions)
     return dumps(transcriptions)
  
 
