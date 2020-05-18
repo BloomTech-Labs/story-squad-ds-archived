@@ -20,3 +20,4 @@ for root, dirs, files in os.walk(path):
             name_list.append(name)
 
 print(len(name_list))
+
