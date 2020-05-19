@@ -1,29 +1,86 @@
 import base64
 import os
 
-path = "C:/Users/micha/Desktop/Lambda/DS-Unit-5_Labs/story-squad-ds/testing/stories"
+path = "C:/Users/micha/Desktop/Lambda/DS-Unit-5_Labs/Story_Squad_Dataset/Transcribed_Stories/32--/"
 path_2 = "C:/Users/micha/Desktop/Lambda/DS-Unit-5_Labs/story-squad-ds/testing/json_files"
 
+for root, dirs, files in os.walk(path):
+    for name in files:
+        if name.endswith((".jpg")):
+            print(name)
+
+
+for root, dirs, files in os.walk(path):
+    print("ROOT:", root)
+    print("DIRS:", dirs)
+    print("FILES:", files)
+    for dir in dirs:
+        input_path = os.path.join(path, dir)
+        for root, dirs, files in os.walk(input_path):
+            for name in files:
+                if name.endswith((".jpg")):
+                    print("NAME:", name)
+                    input_path_2 = os.path.join(input_path, name)
+                    print("INPUT:", input_path_2)
+
+                    with open(input_path_2, "rb") as img_file:
+                        my_string = base64.b64encode(img_file.read())
+                        my_string = my_string.decode()
+
+                        file_name = os.path.splitext(name)[0].replace(" ", "_")
+                        json = f"{{\"images\": [\"data:image/jpg;base64,{my_string}\"], \"file_name\": \"{file_name}\"}}"
+
+                        file_name = os.path.join(path_2, file_name+".json")
+                        json_file = open(f"{file_name}", "w")
+                        json_file.write(json)
+                        json_file.close()
+            
+    # for name in files:
+    #     if name.endswith((".jpg")):
+    #         print("NAME:", name)
+    #         input_path = os.path.join(path, name)
+
+
+
+
+            # print("INPUT:", input_path) 
+            # with open(input_path, "rb") as img_file:
+            #     my_string = base64.b64encode(img_file.read())
+            #     my_string = my_string.decode()
+
+                # file_name = os.path.splitext(name)[0].replace(" ", "_")
+                # json = f"{{\"images\": [\"data:image/jpg;base64,{my_string}\"], \"file_name\": \"{file_name[0]}\"}}"
+
+                # file_name = os.path.join(path_2, file_name+".json")
+                # json_file = open(f"{file_name}", "w")
+                # json_file.write(json)
+                # json_file.close()
+
+
 # iterate through the names of contents of the folder
-for image_path in os.listdir(path): 
-    print(image_path)
+# for image_path in os.listdir(path): 
 
-    # create the full input path and read the file
-    input_path = os.path.join(path, image_path)
-    print(input_path)
+#     # create the full input path and read the file
+#     file_name = os.path.splitext(image_path)
+#     if file_name[1] != ".jpg":
+#         continue 
+#     else:
+#         input_path = os.path.join(path, image_path)
+#         print(image_path)
+#         print("INPUT:", input_path)
 
-    with open(input_path, "rb") as img_file:
-        my_string = base64.b64encode(img_file.read())
-        my_string = my_string.decode()
-        json = f"{{\"images\": [\"data:image/jpg;base64,{my_string}\"]}}"
 
-        file_name = os.path.splitext(image_path)
-        print(file_name)
-        file_name = os.path.join(path_2, file_name[0]+".json")
-        print(file_name)
-        json_file = open(f"{file_name}", "w")
-        json_file.write(json)
-        json_file.close()
+
+#         with open(input_path, "rb") as img_file:
+#             my_string = base64.b64encode(img_file.read())
+#             my_string = my_string.decode()
+#             json = f"{{\"images\": [\"data:image/jpg;base64,{my_string}\"], \"file_name\": \"{file_name[0]}\"}}"
+
+#             file_name = os.path.splitext(image_path)[0].replace(" ", "_")
+#             file_name = os.path.join(path_2, file_name+".json")
+#             json_file = open(f"{file_name}", "w")
+#             json_file.write(json)
+#             json_file.close()
 
 """
 Don't think the following directions are necessary after refactoring
