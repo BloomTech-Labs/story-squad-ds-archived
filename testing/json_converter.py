@@ -13,8 +13,6 @@ and the name of the file as a .json object. That .json object is then being stor
 path = "C:/Users/micha/Desktop/Lambda/DS-Unit-5_Labs/Story_Squad_Dataset/Transcribed_Stories/"
 path_2 = "C:/Users/micha/Desktop/Lambda/DS-Unit-5_Labs/story-squad-ds/testing/json_files"
 
-path_list = []
-
 for root, dirs, files in os.walk(path):
     for dir in dirs:
         input_path = os.path.join(path, dir)
@@ -24,9 +22,7 @@ for root, dirs, files in os.walk(path):
                 for root, dirs, files in os.walk(input_path_2):
                     for name in files:
                         if name.endswith((".jpg")):
-                            input_path_3 = os.path.join(input_path_2, name)
-                            path_list.append(input_path_3)
-                            
+                            input_path_3 = os.path.join(input_path_2, name)                            
                             with open(input_path_3, "rb") as img_file:
                                 my_string = base64.b64encode(img_file.read())
                                 my_string = my_string.decode()
