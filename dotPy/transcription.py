@@ -4,6 +4,7 @@ from decouple import config
 from datauri import DataURI
 import re
 import pandas as pd
+import os
 
 from google.cloud import vision
 from google.cloud.vision import types
@@ -113,10 +114,9 @@ def flag_bad_words(transcriptions):
 
 # Input: JSON String in the transcribable data structure
 # Output: JSON String of the data being processed into transcripts and metadata
-import os
 
-# will need to change the path based on User's local environment path
-path_2 = "C:/Users/micha/Desktop/Lambda/DS-Unit-5_Labs/Story_Squad_Dataset_results"
+# # Will need to change the path based on User's local environment
+# path = "C:/Users/micha/Desktop/Lambda/DS-Unit-5_Labs/Story_Squad_Dataset_results"
 
 def main(transcribable):
     json = loads(transcribable)
@@ -124,13 +124,14 @@ def main(transcribable):
     return_bad_phrases(transcriptions)
     return_bad_words(transcriptions)
 
-    # writing the dictionary output to a .txt file
-    file_name = json['file_name']
-    file_name = os.path.join(path_2, file_name+".txt")
-    print(file_name)
-    output_file = open(f"{file_name}", "w")
-    output_file.write(dumps(transcriptions))
-    output_file.close()
+    # # ONLY uncomment the following block when running tests
+    # # writing the dictionary output to a .txt file and saving in "path"
+    # file_name = json['file_name']
+    # file_name = os.path.join(path, file_name+".txt")
+    # print(file_name)
+    # output_file = open(f"{file_name}", "w")
+    # output_file.write(dumps(transcriptions))
+    # output_file.close()
 
     return dumps(transcriptions)
  
