@@ -1,0 +1,29 @@
+(these notes were taken on 4/9/20)
+
+download Node.js (which will also install nmp)
+pipenv install 
+cd integration
+yarn
+
+pipenv shell
+cd integration
+
+OR 
+pipenv run python dotPy/transcription.py < integration/src/transcription_test.json
+pipenv run python dotPy/readability.py < integration/src/stats_test.json
+pipenv run python dotPy/matchmaking.py < integration/src/matchmaking_test.json
+
+AFTER FIRST SUCCESSFUL TESTS:
+pipenv shell
+
+
+--------------------------------------------------
+Schema is defined in BE: https://github.com/Lambda-School-Labs/story-squad-be/blob/master/src/models/internal/DS.ts
+
+
+--------------------------------------------------
+Would be good to implement some Unit tests 
+
+Based on previous ~47 min call, app was crashing from A) not being based the required data
+						      B) a singular person trying to get matched
+						- unsure if this is still occurring
