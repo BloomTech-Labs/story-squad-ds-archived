@@ -1,44 +1,18 @@
-## README 
-
-- The primary files are in `dotPY` - `matchmaking`, `readability`, and `transcription`
-- These files are integrated into the back-end [here](https://github.com/Lambda-School-Labs/story-squad-be/tree/master/src/util/scripts)
-- Each files contains docstrings attempting to explain what it does, but the best way (obviously) is to read and understand the code itself
-- The `OBE` file above contains decremented files from previous StorySquad DS cohorts
-
-
-
-
- |                                              [Samantha Finley](https:srfinley.github.io)                                              |                                              [Bhavani Rajan](https://bhavani-rajan.github.io/)                                              |                                             [Clay Roberts](claywaddell.com)                                              |                                                           [Ahmad Guenoun](https://personal-portfolio.amguenoun.now.sh/)                                                           |                                                           [Marilyn Landim Esko](https://marilynle.github.io/)                                                           |
-| :-------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| [<img src="https://srfinley.github.io/img/headshot.jpg" width = "200" />](https://srfinley.github.io/) |        [<img src="https://bhavani-rajan.github.io/img/RB.jpeg" width = "200" />](https://bhavani-rajan.github.io/)         | [<img src="http://www.claywaddell.com/img/slack.jpg" width = "200" />](claywaddell.com) | [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://marilynle.github.io/) | [<img src="https://marilynle.github.io/img/IMG1.jpg" width = "200" />](https://github.com/allie-rae) |
-|                     [<img src="https://github.com/favicon.ico" width="15">](https://github.com/srfinley)                      |                         [<img src="https://github.com/favicon.ico" width="15">](https://github.com/Bhavani-Rajan)                         |                                       [<img src="https://github.com/favicon.ico" width="15">](https://github.com/HakujouRyu)                                        |                                       [<img src="https://github.com/favicon.ico" width="15">](https://github.com/amguenoun)                                        |                                       [<img src="https://github.com/favicon.ico" width="15">](https://github.com/marilynle)                                        |
-|       [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/samantha-finley-1a7ab6143/)       | [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](linkedin.com/in/bhavani-rajan-585645) |                    [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](linkedin.com/in/ccrw)                    |                     [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/)                      |                    [<img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15">](https://www.linkedin.com/in/marilyn-landim-esko-612ab6197/)                     |
-
 ## Project Overview
 
 Story Squad is a creative competition platform that encourages children to sharpen their language, drawing, teamwork, and critical thinking skills through an engaging, weekly battle.
 
 [Deployed Front End](https://story-squad.netlify.com/)
 
-### Tech Stack
-
-- Python
-  - Pandas
-  - Textstat
-  - scikit-learn
-- Google Cloud Vision services
-
 ### Data Sources
 
-Due to COPPA compliance, all data sources are private. Contact the project stakeholder for access.
-
-### Python Notebooks
-
-See the "Notebooks" directory.
+Due to COPPA compliance, all data scources are private. Contact the project stakeholder for access.
 
 #### To receive a transcription of an image
 
-Pipe in JSON data to transcription.py via stdin. In the input, include any number of base64-encoded images, with the initial metadata (e.g., `data:image/png;base64,`) stripped out. Format the JSON as follows:
+Pipe in JSON data to transcription.py via stdin (the terminal or bash). In the input, include any number of base64-encoded images, with the initial metadata (e.g., `data:image/png;base64,`) stripped out. Example of what this commands looks like: `pipenv run python matchmaking.py < matchmaking_test.json`
+
+Format the JSON as follows:
 
 ```json
 {
@@ -140,7 +114,7 @@ The app returns the matches in a JSON object structured as follows via stdout:
 ...
 ```
 
-When necessary, the app will also generate a small number of one-on-one and two-on-one matches.
+When necessary, the app will also generate a small number of one-on-one, two-on-one, and two-on-three matches.
 
 ## Documentation
 

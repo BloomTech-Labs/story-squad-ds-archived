@@ -7,7 +7,7 @@ path = "C:/Users/micha/Desktop/Lambda/DS-Unit-5_Labs/story-squad-ds/testing/json
 After images of handwritten text have been converted to JSON objects, this loops over each file and pipes
 it into the transcription.py file which sends it to the Google API . 
 
-When testing, remember to uncomment the path and block of code in the main() function in transcription.py 
+When testing, remember to uncomment the path and block of code in and above the main() function in transcription.py 
 """
 
 
